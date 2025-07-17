@@ -1,6 +1,6 @@
-# Punjabi Religious Reader
+# Reader Application
 
-A modern web application for reading Punjabi religious texts in a page-by-page format. Built with React.js frontend and Node.js backend, featuring beautiful religious theming and responsive design.
+A modern web application for reading Gurmukhi religious texts in a page-by-page format. Built with React.js frontend and Node.js backend, featuring beautiful religious theming and responsive design.
 
 ## Features
 
