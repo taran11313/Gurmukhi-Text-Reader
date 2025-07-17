@@ -1,0 +1,50 @@
+/* Lazy Components Loading Styles */
+
+.component-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100px;
+  color: var(--text-secondary, #666);
+  font-size: 14px;
+  gap: 12px;
+}
+
+.component-loader__spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-color, #E5E5E5);
+  border-top: 2px solid var(--primary-color, #FF9933);
+  border-radius: 50%;
+  animation: component-loader-spin 1s linear infinite;
+}
+
+@keyframes component-loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .component-loader {
+    padding: 15px;
+    min-height: 80px;
+    font-size: 12px;
+  }
+  
+  .component-loader__spinner {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .component-loader__spinner {
+    animation: none;
+    border-top-color: transparent;
+  }
+}

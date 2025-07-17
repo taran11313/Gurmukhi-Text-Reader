@@ -1,0 +1,276 @@
+.network-status-indicator {
+  position: fixed;
+  z-index: 1000;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color, #E5E5E5);
+  font-family: var(--font-family, 'Crimson Text', serif);
+  animation: network-status-slide-in 0.3s ease-out;
+}
+
+.network-status-indicator--top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.network-status-indicator--top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.network-status-indicator--bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.network-status-indicator--bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.network-status-indicator__content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  min-width: 200px;
+}
+
+.network-status-indicator__icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.network-status-indicator__text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  flex: 1;
+}
+
+.network-status-indicator__retry {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.network-status-indicator__retry:hover {
+  background: var(--background-light, #F8F8F8);
+}
+
+.network-status-indicator__retry:focus {
+  outline: 2px solid var(--primary-color, #FF9933);
+  outline-offset: 1px;
+}
+
+/* Status-specific styling */
+.network-status-indicator--offline {
+  border-left: 4px solid #FF6B6B;
+  background: #FFF5F5;
+}
+
+.network-status-indicator--offline .network-status-indicator__text {
+  color: #C53030;
+}
+
+.network-status-indicator--online {
+  border-left: 4px solid #48BB78;
+  background: #F0FFF4;
+}
+
+.network-status-indicator--online .network-status-indicator__text {
+  color: #2F855A;
+}
+
+.network-status-indicator--slow {
+  border-left: 4px solid #ED8936;
+  background: #FFFAF0;
+}
+
+.network-status-indicator--slow .network-status-indicator__text {
+  color: #C05621;
+}
+
+@keyframes network-status-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Offline Banner */
+.offline-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: #FF6B6B;
+  color: white;
+  font-family: var(--font-family, 'Crimson Text', serif);
+  animation: offline-banner-slide-down 0.3s ease-out;
+}
+
+.offline-banner__content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offline-banner__icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.offline-banner__message {
+  flex: 1;
+  min-width: 0;
+}
+
+.offline-banner__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.offline-banner__text {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.offline-banner__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.offline-banner__btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.offline-banner__btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.offline-banner__btn:focus {
+  outline: 2px solid white;
+  outline-offset: 1px;
+}
+
+.offline-banner__btn--dismiss {
+  padding: 0.5rem;
+  min-width: auto;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@keyframes offline-banner-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .network-status-indicator {
+    left: 1rem !important;
+    right: 1rem !important;
+    max-width: none;
+  }
+
+  .network-status-indicator__content {
+    min-width: auto;
+    padding: 0.625rem 0.875rem;
+  }
+
+  .network-status-indicator__text {
+    font-size: 0.8rem;
+  }
+
+  .offline-banner__content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.875rem;
+  }
+
+  .offline-banner__message {
+    text-align: center;
+  }
+
+  .offline-banner__actions {
+    justify-content: center;
+  }
+
+  .offline-banner__btn {
+    flex: 1;
+    max-width: 120px;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .network-status-indicator {
+    border-width: 2px;
+    border-left-width: 6px;
+  }
+
+  .offline-banner {
+    border-bottom: 3px solid #CC0000;
+  }
+
+  .offline-banner__btn {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .network-status-indicator {
+    animation: none;
+  }
+
+  .offline-banner {
+    animation: none;
+  }
+
+  .network-status-indicator__retry {
+    transition: none;
+  }
+
+  .offline-banner__btn {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .network-status-indicator,
+  .offline-banner {
+    display: none;
+  }
+}

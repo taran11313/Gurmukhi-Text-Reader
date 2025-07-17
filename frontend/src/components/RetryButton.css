@@ -1,0 +1,232 @@
+.retry-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family, 'Crimson Text', serif);
+}
+
+.retry-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.retry-button:focus {
+  outline: 2px solid var(--primary-color, #FF9933);
+  outline-offset: 2px;
+}
+
+.retry-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.retry-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.retry-button--retrying {
+  cursor: wait;
+}
+
+/* Variants */
+.retry-button--primary {
+  background: var(--primary-color, #FF9933);
+  color: white;
+}
+
+.retry-button--primary:hover:not(.retry-button--disabled) {
+  background: var(--primary-color-dark, #E6851A);
+  transform: translateY(-1px);
+}
+
+.retry-button--secondary {
+  background: transparent;
+  color: var(--secondary-color, #1B365D);
+  border: 2px solid var(--secondary-color, #1B365D);
+}
+
+.retry-button--secondary:hover:not(.retry-button--disabled) {
+  background: var(--secondary-color, #1B365D);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.retry-button--minimal {
+  background: transparent;
+  color: var(--text-color, #3C2415);
+  border: 1px solid var(--border-color, #E5E5E5);
+}
+
+.retry-button--minimal:hover:not(.retry-button--disabled) {
+  background: var(--background-light, #F8F8F8);
+  border-color: var(--border-color-hover, #D0D0D0);
+}
+
+/* Sizes */
+.retry-button--small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  min-height: 36px;
+}
+
+.retry-button--medium {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+.retry-button--large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  min-height: 52px;
+}
+
+/* Loading state */
+.retry-button__loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.retry-button__text {
+  white-space: nowrap;
+}
+
+/* Attempt info */
+.retry-button__attempt-info {
+  font-size: 0.75rem;
+  color: var(--text-muted, #666);
+  text-align: center;
+}
+
+.retry-button__error-hint {
+  font-size: 0.75rem;
+  color: var(--error-color, #FF6B6B);
+  text-align: center;
+  max-width: 200px;
+  line-height: 1.3;
+}
+
+/* Active state */
+.retry-button:active:not(.retry-button--disabled) {
+  transform: translateY(0);
+}
+
+/* Loading animation overlay */
+.retry-button--retrying::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: retry-button-loading 1.5s infinite;
+}
+
+@keyframes retry-button-loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Countdown state */
+.retry-button--disabled.retry-button--countdown {
+  background: var(--background-light, #F8F8F8);
+  color: var(--text-muted, #666);
+  border-color: var(--border-color, #E5E5E5);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .retry-button {
+    min-width: 120px;
+  }
+
+  .retry-button--small {
+    padding: 0.625rem 1.25rem;
+  }
+
+  .retry-button--medium {
+    padding: 0.875rem 1.75rem;
+  }
+
+  .retry-button--large {
+    padding: 1.125rem 2.25rem;
+  }
+
+  .retry-button__error-hint {
+    max-width: 150px;
+    font-size: 0.7rem;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .retry-button {
+    border-width: 2px;
+  }
+
+  .retry-button--primary {
+    border: 2px solid var(--primary-color, #FF9933);
+  }
+
+  .retry-button--minimal {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .retry-button {
+    transition: none;
+  }
+
+  .retry-button:hover:not(.retry-button--disabled) {
+    transform: none;
+  }
+
+  .retry-button--retrying::before {
+    animation: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .retry-button--minimal {
+    color: #E5E5E5;
+    border-color: #404040;
+  }
+
+  .retry-button--minimal:hover:not(.retry-button--disabled) {
+    background: #2A2A2A;
+    border-color: #606060;
+  }
+
+  .retry-button__attempt-info {
+    color: #999;
+  }
+
+  .retry-button__error-hint {
+    color: #FF8A8A;
+  }
+}

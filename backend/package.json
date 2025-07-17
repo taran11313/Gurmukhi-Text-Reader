@@ -1,0 +1,45 @@
+{
+  "name": "punjabi-religious-reader-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Punjabi Religious Reader",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "db:init": "tsx src/scripts/initDatabase.ts",
+    "db:migrate": "knex migrate:latest",
+    "db:rollback": "knex migrate:rollback",
+    "db:reset": "knex migrate:rollback --all && knex migrate:latest",
+    "db:verify": "tsx src/scripts/verifyDatabase.ts"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/multer": "^2.0.0",
+    "@types/pg": "^8.15.4",
+    "@types/uuid": "^10.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.3.0",
+    "helmet": "^7.1.0",
+    "knex": "^3.1.0",
+    "multer": "^2.0.1",
+    "pdf2pic": "^3.2.0",
+    "pg": "^8.16.3",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^6.3.4",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.4.0"
+  }
+}

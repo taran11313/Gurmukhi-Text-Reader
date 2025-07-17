@@ -1,0 +1,69 @@
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: var(--pattern-opacity, 0.05);
+}
+
+/* Subtle geometric pattern */
+.background-pattern--subtle {
+  background-image: 
+    radial-gradient(circle at 25% 25%, var(--color-gold) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--color-saffron) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px;
+  background-position: 0 0, 30px 30px;
+}
+
+/* Lotus-inspired pattern */
+.background-pattern--lotus {
+  background-image: 
+    radial-gradient(ellipse 20px 8px at center, var(--color-gold) 30%, transparent 30%),
+    radial-gradient(ellipse 8px 20px at center, var(--color-saffron) 30%, transparent 30%);
+  background-size: 80px 80px, 80px 80px;
+  background-position: 0 0, 40px 40px;
+  transform: rotate(45deg);
+}
+
+/* Geometric mandala-inspired pattern */
+.background-pattern--geometric {
+  background-image: 
+    conic-gradient(from 0deg at 50% 50%, 
+      transparent 0deg, 
+      var(--color-gold) 30deg, 
+      transparent 60deg, 
+      var(--color-saffron) 90deg, 
+      transparent 120deg,
+      var(--color-gold) 150deg,
+      transparent 180deg,
+      var(--color-saffron) 210deg,
+      transparent 240deg,
+      var(--color-gold) 270deg,
+      transparent 300deg,
+      var(--color-saffron) 330deg,
+      transparent 360deg
+    );
+  background-size: 120px 120px;
+  mask: radial-gradient(circle at center, black 20%, transparent 40%);
+  -webkit-mask: radial-gradient(circle at center, black 20%, transparent 40%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .background-pattern--subtle {
+    background-size: 40px 40px, 30px 30px;
+    background-position: 0 0, 20px 20px;
+  }
+  
+  .background-pattern--lotus {
+    background-size: 60px 60px, 60px 60px;
+    background-position: 0 0, 30px 30px;
+  }
+  
+  .background-pattern--geometric {
+    background-size: 80px 80px;
+  }
+}

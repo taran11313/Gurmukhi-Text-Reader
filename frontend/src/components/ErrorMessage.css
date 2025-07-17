@@ -1,0 +1,253 @@
+.error-message {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--error-color, #FF6B6B);
+  margin: 1rem 0;
+  overflow: hidden;
+  font-family: var(--font-family, 'Crimson Text', serif);
+}
+
+.error-message__container {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.error-message__icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.error-message__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.error-message__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color, #3C2415);
+}
+
+.error-message__text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  color: var(--text-color, #3C2415);
+}
+
+.error-message__details {
+  margin: 1rem 0;
+  border: 1px solid var(--border-color, #E5E5E5);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.error-message__details-summary {
+  padding: 0.75rem;
+  background: var(--background-light, #F8F8F8);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+}
+
+.error-message__details-summary:hover {
+  background: var(--background-hover, #F0F0F0);
+}
+
+.error-message__details-text {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--text-muted, #666);
+  background: white;
+}
+
+.error-message__suggestions {
+  margin-top: 1rem;
+}
+
+.error-message__suggestions-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color, #3C2415);
+}
+
+.error-message__suggestions-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #666);
+}
+
+.error-message__suggestion {
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+.error-message__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+.error-message__btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.error-message__btn--retry {
+  background: var(--primary-color, #FF9933);
+  color: white;
+}
+
+.error-message__btn--retry:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.error-message__btn--dismiss {
+  background: transparent;
+  color: var(--text-muted, #666);
+  padding: 0.25rem 0.5rem;
+  min-width: auto;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.error-message__btn--dismiss:hover {
+  background: var(--background-light, #F8F8F8);
+  color: var(--text-color, #3C2415);
+}
+
+.error-message__btn:active {
+  transform: translateY(0);
+}
+
+/* Error type specific styling */
+.error-message--network {
+  border-left-color: #FF6B6B;
+}
+
+.error-message--image-load {
+  border-left-color: #FFA726;
+}
+
+.error-message--page-not-found {
+  border-left-color: #FF9800;
+}
+
+.error-message--validation {
+  border-left-color: #FF5722;
+}
+
+.error-message--session {
+  border-left-color: #9C27B0;
+}
+
+.error-message--pdf-processing {
+  border-left-color: #F44336;
+}
+
+.error-message--generic {
+  border-left-color: #757575;
+}
+
+/* Compact variant */
+.error-message--compact {
+  margin: 0.5rem 0;
+}
+
+.error-message--compact .error-message__container {
+  padding: 1rem;
+}
+
+.error-message--compact .error-message__icon {
+  font-size: 1.5rem;
+}
+
+.error-message--compact .error-message__title {
+  font-size: 1.1rem;
+}
+
+.error-message--compact .error-message__suggestions {
+  display: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .error-message__container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .error-message__icon {
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .error-message__actions {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-message__btn {
+    min-width: 100px;
+  }
+
+  .error-message__suggestions-list {
+    padding-left: 1rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .error-message {
+    border-width: 2px;
+    border-left-width: 6px;
+  }
+
+  .error-message__btn--retry {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .error-message__btn {
+    transition: none;
+  }
+
+  .error-message__btn:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .error-message {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .error-message__btn {
+    display: none;
+  }
+}

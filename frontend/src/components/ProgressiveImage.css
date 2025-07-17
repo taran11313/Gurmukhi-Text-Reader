@@ -1,0 +1,115 @@
+/* Progressive Image Component Styles */
+
+.progressive-image {
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+  max-width: 100%;
+  height: auto;
+}
+
+.progressive-image--low-quality {
+  filter: blur(2px);
+  opacity: 0.8;
+}
+
+.progressive-image--high-quality {
+  filter: none;
+  opacity: 1;
+}
+
+.progressive-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color, #FAF7F0);
+  border: 1px solid var(--border-color, #E5E5E5);
+  border-radius: 4px;
+  min-height: 200px;
+  position: relative;
+}
+
+.progressive-image-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary, #666);
+  font-size: 14px;
+}
+
+.progressive-image-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-color, #E5E5E5);
+  border-top: 3px solid var(--primary-color, #FF9933);
+  border-radius: 50%;
+  animation: progressive-image-spin 1s linear infinite;
+}
+
+@keyframes progressive-image-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progressive-image-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--error-background, #FFF5F5);
+  border: 1px solid var(--error-border, #FED7D7);
+  border-radius: 4px;
+  min-height: 200px;
+  color: var(--error-color, #C53030);
+}
+
+.progressive-image-error-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.progressive-image-error-content span:first-child {
+  font-size: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .progressive-image-placeholder {
+    min-height: 150px;
+  }
+  
+  .progressive-image-loading {
+    font-size: 12px;
+  }
+  
+  .progressive-image-spinner {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .progressive-image-placeholder {
+    border-width: 2px;
+  }
+  
+  .progressive-image-spinner {
+    border-width: 4px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .progressive-image {
+    transition: none;
+  }
+  
+  .progressive-image-spinner {
+    animation: none;
+    border-top-color: transparent;
+  }
+}

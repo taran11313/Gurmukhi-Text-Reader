@@ -1,0 +1,69 @@
+/* Google Fonts Import for Religious Theming */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+/* Import accessibility styles */
+@import './styles/accessibility.css';
+
+:root {
+  /* Religious Color Palette */
+  --color-saffron: #FF9933;
+  --color-deep-blue: #1B365D;
+  --color-cream: #FAF7F0;
+  --color-dark-brown: #3C2415;
+  --color-gold: #D4AF37;
+  
+  /* Extended Color Palette */
+  --color-light-saffron: #FFB366;
+  --color-pale-blue: #E8F0F7;
+  --color-warm-white: #FFFEF9;
+  
+  /* Typography */
+  --font-gurmukhi: 'Noto Sans Gurmukhi', sans-serif;
+  --font-english: 'Crimson Text', serif;
+  
+  /* Spacing System */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* Border Radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  
+  /* Shadows */
+  --shadow-soft: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-strong: 0 8px 16px rgba(0, 0, 0, 0.2);
+  
+  /* Base Typography Settings */
+  font-family: var(--font-english);
+  line-height: 1.5;
+  font-weight: 400;
+  
+  color: var(--color-dark-brown);
+  background-color: var(--color-cream);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
